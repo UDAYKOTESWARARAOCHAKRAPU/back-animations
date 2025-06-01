@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>My Website</title>
+        <link rel="stylesheet" href="style.css" />
+    </head>
+    <body>
+        <div id="background-animation"></div>
+
+        <div id="content" class="content">
+            <!-- Content will be loaded dynamically -->
+        </div>
+
+        <script src="background.js"></script>
+        <script>
+async function loadPage(page) {
+  const res = await fetch(`./pages/${page}.html`);
+  const html = await res.text();
+  const contentElement = document.getElementById("content");
+  contentElement.innerHTML = html;
+
+  // Apply a page-specific class to the body or content
+  document.body.className = `page-${page}`; // e.g., "page-home", "page-about"
+}
+
+
+    // Initial load
+    loadPage("home");
+
+    // Listen for internal link clicks
+    document.addEventListener("click", (e) => {
+      const target = e.target.closest("a[data-link]");
+      if (target) {
+        e.preventDefault();
+        const page = target.getAttribute("data-link");
+        loadPage(page);
+        history.pushState(null, "", `#${page}`);
+      }
+    });
+
+    // Handle back/forward navigation
+    window.addEventListener("popstate", () => {
+      const page = location.hash.replace("#", "") || "home";
+      loadPage(page);
+    });
+  </script>
+    </body>
+</html>

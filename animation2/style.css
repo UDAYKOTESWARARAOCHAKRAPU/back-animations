@@ -1,0 +1,107 @@
+/* Fullscreen body setup */
+body, html {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  font-family: 'Segoe UI', sans-serif;
+  color: white;
+  overflow-x: hidden;
+}
+
+/* Background animation container */
+#background-animation {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+  background: radial-gradient(circle at center, #0f2027, #203a43, #2c5364);
+  overflow: hidden;
+}
+
+/* Animated floating particles */
+.dot {
+  position: absolute;
+  border-radius: 50%;
+  background-color: rgba(255, 255, 255, 0.4);
+  animation: floatUp 10s linear infinite;
+}
+
+@keyframes floatUp {
+  0% {
+    transform: translateY(100vh);
+    opacity: 0;
+  }
+  50% {
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(-10vh);
+    opacity: 0;
+  }
+}
+
+/* Shared content area */
+/* Shared content styling */
+.content {
+    padding: 40px;
+    transition: all 0.3s ease;
+  }
+  
+  /* Home Page */
+  body.page-home .content {
+    color: #00ffff;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid #00ffff;
+    height: 100%;
+  }
+  body.page-home a {
+    color: #00ffff;
+    text-decoration: none;
+    border: 1px solid #00ffff;
+    padding: 10px;
+    border-radius: 5px;
+    transition: all 0.3s ease-in-out;
+  }
+  body.page-home a:hover {
+    background-color: #00ffff;
+    color: #000;
+  }
+  /* About Page */
+  body.page-about .content {
+    color: hotpink;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid hotpink;
+    height: 100%;
+  }
+  body.page-about #home {
+    color: hotpink;
+    text-decoration: none;
+    border: 1px solid hotpink;
+    padding: 10px;
+    border-radius: 5px;
+    transition: all 0.3s ease-in-out;
+  }
+  body.page-about #home:hover {
+    background-color: hotpink;
+    color: #000;
+  }
+  body.page-about #contact {
+    color: #00ffff;
+    text-decoration: none;
+    border: 1px solid #00ffff;
+    padding: 10px;
+    border-radius: 5px;
+    transition: all 0.3s ease-in-out;
+  }
+  body.page-about #contact:hover {
+    background-color: #00ffff;
+    color: #000;
+  }
